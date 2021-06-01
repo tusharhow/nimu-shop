@@ -1,7 +1,6 @@
 import 'package:get/state_manager.dart';
 import 'package:nimu_shop/models/product.dart';
 
-
 class ShoppingController extends GetxController {
   var products = <Product>[].obs;
 

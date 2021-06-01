@@ -1,4 +1,3 @@
-
 class Product {
   final int id;
   final String productName;
@@ -10,9 +9,7 @@ class Product {
     this.id,
     this.productName,
     this.productImage,
-    this.productDescription,
     this.price,
+    this.productDescription,
   });
-
-  
 }

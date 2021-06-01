@@ -10,6 +10,10 @@ class ShoppingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Nimu Shop'),
+        backgroundColor: Colors.green,
+      ),
       body: SafeArea(
         child: Column(
           children: [
