@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nimu_shop/controllers/cart_controller.dart';
 import 'package:nimu_shop/controllers/shop_controller.dart';
+import 'package:nimu_shop/views/cart_page.dart';
 
 class ShoppingPage extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
@@ -48,7 +49,6 @@ class ShoppingPage extends StatelessWidget {
                                   ),
                                   Text(
                                     '${controller.products[index].productDescription}',
-                                    style: TextStyle(),
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -63,8 +63,7 @@ class ShoppingPage extends StatelessWidget {
                                 primary: Colors.green,
                               ),
                               onPressed: () {
-                                cartController
-                                    .addToCart(controller.products[index]);
+                                cartController.addToCart(controller.products[index]);
                               },
                               child: Text('Add to Cart'),
                             ),
@@ -73,7 +72,8 @@ class ShoppingPage extends StatelessWidget {
                             ),
                             Text(
                               '\$${controller.products[index].price}',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.black54),
                             ),
                           ]),
                         ],
@@ -86,7 +86,10 @@ class ShoppingPage extends StatelessWidget {
             GetX<CartController>(builder: (controller) {
               return Text(
                 'Total Amount \$ ${controller.totalPrice}',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54),
               );
             }),
             SizedBox(height: 50),
@@ -94,11 +97,18 @@ class ShoppingPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          icon: Icon(Icons.card_travel),
-          label: GetX<CartController>(builder: (controller) {
-            return Text('${controller.count}');
-          })),
+        onPressed: () {
+          Get.to(CartPage());
+        },
+        icon: Icon(Icons.card_travel),
+        label: GetX<CartController>(
+          builder: (controller) {
+            return Text(
+              '${controller.count}',
+            );
+          },
+        ),
+      ),
     );
   }
 }
