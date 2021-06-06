@@ -20,52 +20,73 @@ class ShoppingPage extends StatelessWidget {
             Expanded(
               child: GetX<ShoppingController>(builder: (controller) {
                 return ListView.builder(
-                    itemCount: controller.products.length,
-                    itemBuilder: (context, index) => Card(
-                        margin: const EdgeInsets.all(12),
-                        child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                  itemCount: controller.products.length,
+                  itemBuilder: (context, index) => Card(
+                    margin: const EdgeInsets.all(12),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '${controller.products[index].productName}',
-                                            style: TextStyle(fontSize: 24),
-                                          ),
-                                          Text(
-                                              '${controller.products[index].productDescription}'),
-                                        ],
-                                      ),
-                                      Text(
-                                          '\$${controller.products[index].price}',
-                                          style: TextStyle(fontSize: 24)),
-                                    ],
+                                  Text(
+                                    '${controller.products[index].productName}',
+                                    style: TextStyle(fontSize: 24),
                                   ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      cartController.addToCart(
-                                          controller.products[index]);
-                                    },
-                                    child: Text('Add to Cart'),
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                ]))));
+                                  Image.network(
+                                      '${controller.products[index].productImage}'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    '${controller.products[index].productDescription}',
+                                    style: TextStyle(),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                cartController
+                                    .addToCart(controller.products[index]);
+                              },
+                              child: Text('Add to Cart'),
+                            ),
+                            SizedBox(
+                              width: 150,
+                            ),
+                            Text(
+                              '\$${controller.products[index].price}',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ]),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               }),
             ),
             GetX<CartController>(builder: (controller) {
               return Text(
                 'Total Amount \$ ${controller.totalPrice}',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               );
             }),
-            SizedBox(height: 100),
+            SizedBox(height: 50),
           ],
         ),
       ),
