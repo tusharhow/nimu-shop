@@ -59,6 +59,9 @@ class ShoppingPage extends StatelessWidget {
                           ),
                           Row(children: [
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.green,
+                              ),
                               onPressed: () {
                                 cartController
                                     .addToCart(controller.products[index]);
