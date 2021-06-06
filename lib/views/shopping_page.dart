@@ -35,17 +35,14 @@ class ShoppingPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    '${controller.products[index].productName}',
-                                    style: TextStyle(fontSize: 24),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
                                   Image.network(
                                       '${controller.products[index].productImage}'),
                                   SizedBox(
                                     height: 10,
+                                  ),
+                                  Text(
+                                    '${controller.products[index].productName}',
+                                    style: TextStyle(fontSize: 24),
                                   ),
                                   Text(
                                     '${controller.products[index].productDescription}',
@@ -57,25 +54,28 @@ class ShoppingPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.green,
-                              ),
-                              onPressed: () {
-                                cartController.addToCart(controller.products[index]);
-                              },
-                              child: Text('Add to Cart'),
-                            ),
-                            SizedBox(
-                              width: 150,
-                            ),
-                            Text(
-                              '\$${controller.products[index].price}',
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.black54),
-                            ),
-                          ]),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '\$${controller.products[index].price}',
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black54),
+                                ),
+                                SizedBox(
+                                  width: 150,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.green,
+                                  ),
+                                  onPressed: () {
+                                    cartController
+                                        .addToCart(controller.products[index]);
+                                  },
+                                  child: Text('Add to Cart'),
+                                ),
+                              ]),
                         ],
                       ),
                     ),
@@ -83,16 +83,6 @@ class ShoppingPage extends StatelessWidget {
                 );
               }),
             ),
-            GetX<CartController>(builder: (controller) {
-              return Text(
-                'Total Amount \$ ${controller.totalPrice}',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54),
-              );
-            }),
-            SizedBox(height: 50),
           ],
         ),
       ),

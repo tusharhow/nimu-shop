@@ -25,24 +25,23 @@ class _CartPageState extends State<CartPage> {
       ),
       body: GetX<CartController>(builder: (controller) {
         return ListView.builder(
-          itemCount: controller.cartItems.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: GetX<CartController>(builder: (controller) {
-                return Text(
-                  '${controller.cartItems[index].productName}',
-                  style: TextStyle(fontSize: 18),
-                );
-              }),
-              trailing: IconButton(
-                icon: Icon(Icons.remove_circle),
-                onPressed: () {
-                  cartController.removeFromCart(controller.cartItems[index]);
-                },
-              ),
-            );
-          },
-        );
+            itemCount: controller.cartItems.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: GetX<CartController>(builder: (controller) {
+                  return Text(
+                    '${controller.cartItems[index].productName}',
+                    style: TextStyle(fontSize: 18),
+                  );
+                }),
+                trailing: IconButton(
+                  icon: Icon(Icons.remove_circle),
+                  onPressed: () {
+                    cartController.removeFromCart(controller.cartItems[index]);
+                  },
+                ),
+              );
+            });
       }),
     );
   }
