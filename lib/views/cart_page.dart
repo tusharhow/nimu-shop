@@ -44,7 +44,8 @@ class _CartPageState extends State<CartPage> {
                           },
                         ),
                         trailing: IconButton(
-                          icon: Icon(Icons.remove_circle),
+                          icon: Icon(Icons.remove_circle_outline),
+                          color: Colors.green,
                           onPressed: () {
                             cartController
                                 .removeFromCart(controller.cartItems[index]);
@@ -64,8 +65,8 @@ class _CartPageState extends State<CartPage> {
             child: GetX<CartController>(builder: (controller) {
               return Center(
                 child: Text(
-                  'Total Pricice ${controller.totalPrice}',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  'Total Pricice \$${controller.totalPrice}',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               );
             }),

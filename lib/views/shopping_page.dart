@@ -42,14 +42,14 @@ class ShoppingPage extends StatelessWidget {
                                   ),
                                   Text(
                                     '${controller.products[index].productName}',
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 20),
                                   ),
                                   Text(
                                     '${controller.products[index].productDescription}',
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  // SizedBox(
+                                  //   height: 5,
+                                  // ),
                                 ],
                               ),
                             ],
@@ -60,10 +60,7 @@ class ShoppingPage extends StatelessWidget {
                                 Text(
                                   '\$${controller.products[index].price}',
                                   style: TextStyle(
-                                      fontSize: 20, color: Colors.black54),
-                                ),
-                                SizedBox(
-                                  width: 150,
+                                      fontSize: 18, color: Colors.black54),
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -88,9 +85,9 @@ class ShoppingPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Get.to(CartPage());
+          Get.to(() => CartPage(), transition: Transition.rightToLeft);
         },
-        icon: Icon(Icons.card_travel),
+        icon: Icon(Icons.shopping_basket_rounded),
         label: GetX<CartController>(
           builder: (controller) {
             return Text(
